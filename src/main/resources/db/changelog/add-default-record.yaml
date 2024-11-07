@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: fladx
+      changes:
+        - sql:
+            sql: |
+              INSERT INTO wallet (id, balance)
+              SELECT '00000000-0000-0000-0000-000000000000', 1000
+              WHERE NOT EXISTS (SELECT 1 FROM wallet WHERE id = '00000000-0000-0000-0000-000000000000');
